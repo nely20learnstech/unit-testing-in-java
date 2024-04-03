@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Vector;
 
-class MoneyBag {
+class MoneyBag implements IMoney {
     private Vector<Money> fMonies = new Vector<Money>();
 
     MoneyBag (Money m1, Money m2){
@@ -16,7 +16,22 @@ class MoneyBag {
         for (int i = 0; i < bag.length; i++)
             appendMoney(bag[i]);
     }
+    
+    public IMoney add(IMoney m)
+    {
+    	return ((MoneyBag) m).addMoneyBag(this);
+    }
 
+
+    public MoneyBag addMoneyBag(MoneyBag bag) {
+        for(Money money : bag.fMonies)
+        {
+        	appendMoney(money);
+        }
+        return this;
+    }
+    
+    
     private void appendMoney(Money m){
         if(fMonies.isEmpty())
         {

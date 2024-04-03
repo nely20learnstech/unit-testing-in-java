@@ -1,6 +1,6 @@
 package test.unit.testing;
 
-public class Money {
+public class Money implements IMoney{
 	private int fAmount;
     private String fCurrency;
 
@@ -20,17 +20,22 @@ public class Money {
         return fCurrency;
     }
 
-    // public Money add(Money money)
-    // {
-    //   return new Money(amount() + money.amount(), currency());
-    // }
+    public Money addMoney(Money money)
+    {
+      return new Money(amount() + money.amount(), currency());
+    }
     
     // Correction de la méthode add
-    public Money add(Money m)
+    //public Money add(Money m)
+    //{
+    	//if(m.currency().equals(currency()))
+    		//return new Money(amount() + m.amount(), currency());
+    	//return new MoneyBag(this, m);
+    //}
+    
+    public IMoney add(IMoney m)
     {
-    	if(m.currency().equals(currency()))
-    		return new Money(amount() + m.amount(), currency());
-    	return new MoneyBag(this, m);
+    	return ((Money) m).addMoney(this);
     }
     
     public boolean equals(Money money1, Money money2) {

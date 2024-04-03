@@ -20,7 +20,7 @@ public class MoneyTest {
 	@Test
 	public void testSimpleAdd() {
 		Money expected = new Money(26, "CHF");
-		Money result = m12CHF.add(m14CHF);
+		Money result = m12CHF.addMoney(m14CHF);
 		assertTrue(expected.equals(result));
 	}
 
